@@ -39,3 +39,11 @@ def record_update(request, pk):
     else:
         form = RecordForm(instance=record)
     return render(request, 'crm/record_form.html', {'form': form})
+
+
+def record_delete(request, pk):
+    record = get_object_or_404(Record, pk=pk)
+    if request.method == "POST":
+        record.delete()
+        return redirect('record_list')
+    return render(request, 'crm/record_confirm_delete.html', {'record': record})
