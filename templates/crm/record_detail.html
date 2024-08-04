@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Record Details</h1>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Field</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ record.first_name }} {{ record.last_name }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ record.email }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ record.phone }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ record.address }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ record.city }}</td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td>{{ record.state }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ record.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>Created At</th>
+                <td>{{ record.created_at }}</td>
+            </tr>
+            <tr>
+                <th>ID</th>
+                <td>{{ record.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{% url 'record_list' %}" class="btn btn-primary">Back to List</a>
+{% endblock %}
