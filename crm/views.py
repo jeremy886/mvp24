@@ -27,3 +27,15 @@ def record_create(request):
     else:
         form = RecordForm()
     return render(request, 'crm/record_form.html', {'form': form})
+
+
+def record_update(request, pk):
+    record = get_object_or_404(Record, pk=pk)
+    if request.method == "POST":
+        form = RecordForm(request.POST, instance=record)
+        if form.is_valid():
+            form.save()
+            return redirect('record_detail', pk=record.pk)
+    else:
+        form = RecordForm(instance=record)
+    return render(request, 'crm/record_form.html', {'form': form})
