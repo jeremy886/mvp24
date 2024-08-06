@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Record
 from .forms import RecordForm
 
@@ -17,7 +18,7 @@ def record_detail(request, pk):
     record = get_object_or_404(Record, pk=pk)
     return render(request, 'crm/record_detail.html', {'record': record})
 
-
+@login_required
 def record_create(request):
     if request.method == "POST":
         form = RecordForm(request.POST)

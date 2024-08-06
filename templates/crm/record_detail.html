@@ -49,4 +49,11 @@
         </tbody>
     </table>
     <a href="{% url 'record_list' %}" class="btn btn-primary">Back to List</a>
+    <a href="{% url 'record_update' record.pk %}" class="btn btn-warning">Update</a>
+    <form action="{% url 'record_delete' record.pk %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger"
+                onclick="return confirm('Are you sure you want to delete this record?');">Delete
+        </button>
+    </form>
 {% endblock %}
