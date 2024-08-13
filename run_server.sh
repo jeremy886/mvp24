@@ -19,8 +19,7 @@ else
 fi
 
 # Generate a new secret key
-# echo "export SECRET_KEY='$(openssl rand -hex 40)'" > .DJANGO_SECRET_KEY
-source .DJANGO_SECRET_KEY
+export SECRET_KEY="$(openssl rand -hex 40)"
 
 # Print the settings being used
 echo "Starting Django server with settings: $DJANGO_SETTINGS_MODULE"
