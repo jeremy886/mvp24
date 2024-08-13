@@ -16,6 +16,3 @@ migrations/
 # Static and media files
 staticfiles/
 media/
-
-
-.DJANGO_SECRET_KEY
