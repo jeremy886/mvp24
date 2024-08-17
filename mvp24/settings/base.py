@@ -4,11 +4,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent.parent  # add .parent due to base.py
 
 
-import os
-try:
-    SECRET_KEY = os.environ["SECRET_KEY"]
-except KeyError as e:
-    raise RuntimeError("Could not find a SECRET_KEY in environment") from e
+
 
 
 # Application definition
