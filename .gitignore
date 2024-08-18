@@ -16,3 +16,7 @@ migrations/
 # Static and media files
 staticfiles/
 media/
+
+
+# OS
+.DS_Store
