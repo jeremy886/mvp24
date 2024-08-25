@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ quiz.title }}</h1>
+    <p>Question {{ question_number }} of {{ quiz.questions.count }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend>{{ question.text }}</legend>
+            {% for choice in choices %}
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="choice" id="choice{{ choice.id }}"
+                           value="{{ choice.id }}" required>
+                    <label class="form-check-label" for="choice{{ choice.id }}">
+                        {{ choice.text }}
+                    </label>
+                </div>
+            {% endfor %}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Submit Answer</button>
+    </form>
+{% endblock %}

@@ -15,3 +15,14 @@ class Record(models.Model):
     def __str__(self):
         """display first name and last name in the Django Admin"""
         return (f"{self.first_name} {self.last_name}")
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=200)
+    time = models.DateTimeField()
+    location = models.CharField(max_length=200)
+    description = models.TextField()
+    link = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name

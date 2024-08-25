@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Record
+from .models import Record, Event
 from .forms import RecordForm
 
 
@@ -17,6 +17,7 @@ def record_list(request):
 def record_detail(request, pk):
     record = get_object_or_404(Record, pk=pk)
     return render(request, 'crm/record_detail.html', {'record': record})
+
 
 @login_required
 def record_create(request):
@@ -48,3 +49,8 @@ def record_delete(request, pk):
         record.delete()
         return redirect('record_list')
     return render(request, 'crm/record_confirm_delete.html', {'record': record})
+
+
+def event_list(request):
+    events = Event.objects.all()
+    return render(request, 'crm/event_list.html', {"events": events})
