@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Quiz Report: {{ quiz.title }}</h1>
+
+    <p>Total Questions: {{ total_questions }}</p>
+    <p>Correct Answers: {{ correct_answers }}</p>
+    <p>Score: {{ score_percentage }}%</p>
+    <p>Grade: {{ letter_grade }}</p>
+
+    <h2>Your Answers</h2>
+    <ul>
+    {% for answer in user_answers %}
+        <li>
+            <strong>Question:</strong> {{ answer.question.text }}<br>
+            <strong>Your Answer:</strong> {{ answer.selected_choice.text }}<br>
+            {% if answer.is_correct %}
+                <span class="text-success">Correct</span>
+            {% else %}
+                <span class="text-danger">Incorrect</span>
+                <br><strong>Correct Answer:</strong> {{ answer.correct_choice.text }}
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'quiz_select' %}" class="btn btn-primary">Back to Quizzes</a>
+{% endblock %}
