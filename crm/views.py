@@ -9,11 +9,13 @@ def home(request):
     return render(request, 'crm/home.html', {'records': records})
 
 
+@login_required
 def record_list(request):
     records = Record.objects.all()
     return render(request, 'crm/record_list.html', {"records": records})
 
 
+@login_required
 def record_detail(request, pk):
     record = get_object_or_404(Record, pk=pk)
     return render(request, 'crm/record_detail.html', {'record': record})
@@ -31,6 +33,7 @@ def record_create(request):
     return render(request, 'crm/record_form.html', {'form': form})
 
 
+@login_required
 def record_update(request, pk):
     record = get_object_or_404(Record, pk=pk)
     if request.method == "POST":
@@ -43,6 +46,7 @@ def record_update(request, pk):
     return render(request, 'crm/record_form.html', {'form': form})
 
 
+@login_required
 def record_delete(request, pk):
     record = get_object_or_404(Record, pk=pk)
     if request.method == "POST":
